@@ -7,7 +7,8 @@ $sql = "SELECT posts.id, posts.title, posts.content, posts.created_at,
         JOIN users ON posts.user_id = users.id
         ORDER BY posts.created_at DESC";
 
-$stmt = $pdo->query($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo "

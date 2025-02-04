@@ -2,7 +2,8 @@
 require 'db.php';
 
 $sql = "SELECT * FROM users";
-$stmt = $pdo->query($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo "
